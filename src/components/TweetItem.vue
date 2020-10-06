@@ -9,6 +9,7 @@
             </div>
         </div>
     </div>
+    <div class="gap"></div>
 </template>
 
 
@@ -47,6 +48,11 @@ export default {
 
 .tweet-item__user {
     font-weight: bold;
+    padding-bottom: 5px;
+}
+
+.gap {
+    height: 10px;
 }
 
 </style>
