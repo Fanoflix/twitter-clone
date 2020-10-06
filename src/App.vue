@@ -28,6 +28,8 @@ export default {
   },
   watch:{
     followers(newCount, oldCount) {
+      console.log(`Old follower Count = ${oldCount}`)
+      console.log(`New follower Count = ${newCount}`)
       if (oldCount < newCount)
       {
         console.log(`${this.user.username} has gained a new follower!`)
