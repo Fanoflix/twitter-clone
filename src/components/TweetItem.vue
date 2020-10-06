@@ -1,5 +1,5 @@
 <template>
-    <div class="tweet-item">
+    <div class="tweet-item" @click="favouriteTweet(tweet.id)">
         <div class="user-profile__tweet">
             <div class="tweet-item__user">
                 @{{username}}
@@ -24,6 +24,12 @@ export default {
         tweet: {
             type: Object,
             required: true
+        }
+    },
+    methods: {
+        favouriteTweet(id) {
+            //favourite is now an event. We use this in UserProfile.vue file
+            this.$emit('favourite', id) //We're emitting (returning back to the parent) the id... and also in turn making 'favourite' an event.
         }
     }
 };

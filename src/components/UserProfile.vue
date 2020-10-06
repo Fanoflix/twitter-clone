@@ -11,7 +11,11 @@
         </div>
 
         <div class="user-profile__tweets-wrapper">
-            <TweetItem v-for="tweet in user.tweets" :key="tweet.id" :username="user.username" :tweet="tweet" />
+            <TweetItem v-for="tweet in user.tweets" 
+                :key="tweet.id" 
+                :username="user.username" 
+                :tweet="tweet" 
+                @favourite="toggleFavourite"/>
         </div>
     </div>
 
@@ -57,6 +61,9 @@ export default {
   methods: {
     followUser() {
       this.followers++
+    },
+    toggleFavourite(id) {
+        console.log(`Favourited Tweet #${id}`)
     }
   },
   mounted() {
