@@ -11,9 +11,7 @@
         </div>
 
         <div class="user-profile__tweets-wrapper">
-            <div class="user-profile__tweet" v-for="tweet in user.tweets" :key="tweet.id">
-                {{ tweet.content}}
-            </div>
+            <TweetItem v-for="tweet in user.tweets" :key="tweet.id" :username="user.username" :tweet="tweet" />
         </div>
     </div>
 
@@ -21,29 +19,30 @@
 </template>
 
 <script>
+import TweetItem from './TweetItem'
+
 export default {
     name: "UserProfile",
+    components: {TweetItem},
     data() {
         return {
         followers: 0,
         user: {
-        id: 1,
-        username: '_Fanoflix',
-        firstName: 'Ammar',
-        lastName: 'Nasir',
-        email: 'majidammar428@gmail.com',
-        isAdmin: true,
-        tweets: [
-            {id: 1, content: 'Cloning twitter here *whistles*'},
-            {id: 2, content: 'Testing things out, nothing to see here.'}
+            id: 1,
+            username: '_Fanoflix',
+            firstName: 'Ammar',
+            lastName: 'Nasir',
+            email: 'majidammar428@gmail.com',
+            isAdmin: true,
+            tweets: [
+                {id: 1, content: 'Cloning twitter here *whistles*'},
+                {id: 2, content: 'Testing things out, nothing to see here.'}
         ]
       }
     }
   },
   watch:{
     followers(newCount, oldCount) {
-      console.log(`Old follower Count = ${oldCount}`)
-      console.log(`New follower Count = ${newCount}`)
       if (oldCount < newCount)
       {
         console.log(`${this.user.username} has gained a new follower!`)
