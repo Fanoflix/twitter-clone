@@ -60,9 +60,4 @@ export default {
   flex-direction: column;
   text-align: center;
 }
-
-button{
-  width: 2in;
-  align-self: center;
-}
 </style>
