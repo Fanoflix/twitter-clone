@@ -2,7 +2,7 @@
     <div class="user-profile">
         <div class="user-profile__user-panel">
             <h1 class="user-profile__username"> @{{ user.username }} </h1>
-                <div class="user-profile__admin-badge">
+                <div class="user-profile__admin-badge" v-if="user.isAdmin">
                     Admin
                 </div>
                <div class="user-profile__follower-count">
