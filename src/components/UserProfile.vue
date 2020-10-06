@@ -9,6 +9,12 @@
                     <strong>Followers: </strong> {{ followers }}
                </div>
         </div>
+
+        <div class="user-profile__tweets-wrapper">
+            <div class="user-profile__tweet" v-for="tweet in user.tweets" :key="tweet.id">
+                {{ tweet.content}}
+            </div>
+        </div>
     </div>
 
 
@@ -26,7 +32,11 @@ export default {
         firstName: 'Ammar',
         lastName: 'Nasir',
         email: 'majidammar428@gmail.com',
-        isAdmin: true
+        isAdmin: true,
+        tweets: [
+            {id: 1, content: 'Cloning twitter here *whistles*'},
+            {id: 2, content: 'Testing things out, nothing to see here.'}
+        ]
       }
     }
   },
