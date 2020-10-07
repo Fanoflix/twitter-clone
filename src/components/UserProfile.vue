@@ -8,6 +8,10 @@
                <div class="user-profile__follower-count">
                     <strong>Followers: </strong> {{ followers }}
                </div>
+               <form class="user-profile__create-tweet">
+                 <label for="newTweet"> <strong> New Tweet </strong></label>
+                 <textarea id="newTweet" rows="4"></textarea>
+               </form>
         </div>
 
         <div class="user-profile__tweets-wrapper">
@@ -76,13 +80,13 @@ export default {
 .user-profile {
     display: grid;
     grid-template-columns: 1fr 3fr;
+    grid-gap: 50px;
     width: 100%;
     padding: 50px 5%;
     
 }
 
 .user-profile__user-panel {
-    size: auto;
     display: flex;
     flex-direction: column;
     margin-right: 50px;
@@ -90,8 +94,6 @@ export default {
     background-color: white;    
     border-radius: 5px;
     border: 1px solid #dfe3e8;
-    width: 300px;
-    height: 100px;
 }
 
 .user-profile__username {
@@ -107,12 +109,26 @@ export default {
     padding: 2px 10px;
 }
 
+.user-profile__tweet-wrapper {
+  display: grid;
+  grid-gap: 10px;
+}
+
 .user-profile__follower-count {
     padding: 5px 0px;
 }
+
 h1 {
     padding: 10px 0px;
     margin: 0;
+}
+
+.user-profile__create-tweet {
+  border-top: 1px solid #dfe3e8;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+
 }
 </style>
 
