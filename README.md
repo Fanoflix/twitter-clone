@@ -7,7 +7,9 @@
 ```
 
 ```
-The "Website So Far.PNG will be updated as frequently as possible so that newbies (like me) can feel inspired or motivated. Honestly its more to help myself get excited for the next step.
+The "Website So Far.PNG will be updated as frequently as possible 
+so that newbies (like me) can feel inspired or motivated. 
+Honestly its more to help myself get excited for the next step.
 ```
 
 
