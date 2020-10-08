@@ -1,4 +1,7 @@
-# twitter-clone
+# Twitter Clone
+
+#### Twitter clone in terms of functionality. UI will definitely be ugly (unless I sacrifice my grades this semester)
+
 
 ## Project setup
 ```
@@ -22,3 +25,4 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
