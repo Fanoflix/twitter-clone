@@ -1,6 +1,16 @@
 # Twitter Clone
 
-#### Twitter clone in terms of functionality. UI will definitely be ugly (unless I sacrifice my grades this semester)
+#### Twitter clone in terms of functionality. UI will definitely be ugly (unless I sacrifice my grades this semester).
+## 
+```diff
+- This prject is NOT complete yet! 
+```
+
+```
+```
+The "Website So Far.PNG will be updated as frequently as possible so that newbies (like me) can feel inspired or motivated. Honestly its more to help myself get excited for the next step.
+```
+```
 
 
 ## Project setup
