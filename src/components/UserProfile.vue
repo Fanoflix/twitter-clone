@@ -106,6 +106,7 @@ export default {
               content: this.newTweetContent
             })
           }
+          this.newTweetContent = '';
         }
       },
       mounted() {
@@ -132,6 +133,8 @@ export default {
     background-color: white;    
     border-radius: 5px;
     border: 1px solid #dfe3e8;
+    width: 300px;
+    height: 250px;
 }
 
 .user-profile__username {
