@@ -14,11 +14,11 @@
         </div>
 
         <!-- Create Tweet -->
-                                                                            <!-- :class is a special class, we can provide a condition for the class to be implemented.
+                                                                            <!-- :class is a special class, we can provide a condition for this class to be implemented.
                                                                                   It will only be implemented if newTweetCharacterCount exceeds 180 in this case -->
         <form class="user-profile__create-tweet" @submit.prevent="createNewTweet" :class="{ '--exceeded': newTweetCharacterCount > 180}">
           <label for="newTweet"> <strong> New Tweet </strong> ({{newTweetCharacterCount}}/180) </label>
-          <!-- The value of the "newTweetContent" is now synced up with the value of this text area. This is because we provided a 'v-model' to the text area-->
+          <!-- The value of the "newTweetContent" is now synced up with the value of this text area. This is because we provided a 'v-model' to the text area-->  
           <textarea id="newTweet" rows="4" v-model="newTweetContent"></textarea>
 
           <!-- Tweet Types Selector UI -->
@@ -150,6 +150,17 @@ export default {
       padding: 20px;
       display: flex;
       flex-direction: column;
+
+      &.--exceeded{
+        color:red;
+        border-color: red;
+        
+        button{
+          background-color: red;
+          border: none;
+          color: white;
+        }
+      }
     }
 
     .user-profile__username {
@@ -176,6 +187,8 @@ export default {
 .user-profile__follower-count {
     padding: 5px 0px;
 }
+
+
 
 
 </style>
