@@ -14,8 +14,10 @@
         </div>
 
         <!-- Create Tweet -->
-        <form class="user-profile__create-tweet" @submit.prevent="createNewTweet">
-          <label for="newTweet"> <strong> New Tweet </strong></label>
+                                                                            <!-- :class is a special class, we can provide a condition for the class to be implemented.
+                                                                                  It will only be implemented if newTweetCharacterCount exceeds 180 in this case -->
+        <form class="user-profile__create-tweet" @submit.prevent="createNewTweet" :class="{ '--exceeded': newTweetCharacterCount > 180}">
+          <label for="newTweet"> <strong> New Tweet </strong> ({{newTweetCharacterCount}}/180) </label>
           <!-- The value of the "newTweetContent" is now synced up with the value of this text area. This is because we provided a 'v-model' to the text area-->
           <textarea id="newTweet" rows="4" v-model="newTweetContent"></textarea>
 
@@ -89,6 +91,9 @@ export default {
       computed: {
         fullName() {
           return `${this.user.firstName} ${this.user.lastName}`
+        },
+        newTweetCharacterCount() {
+          return this.newTweetContent.length;
         }
       },
       methods: {
@@ -115,17 +120,16 @@ export default {
 }
 </script>
 
-<style>
+<!-- The scoped Attribute. Clean way to write CSS -->
+<style lang="scss" scoped>
 .user-profile {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-gap: 50px;
-    width: 100%;
-    padding: 50px 5%;
-    
-}
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 50px;
+  width: 100%;
+  padding: 50px 5%;
 
-.user-profile__user-panel {
+  .user-profile__user-panel {
     display: flex;
     flex-direction: column;
     margin-right: 50px;
@@ -135,41 +139,44 @@ export default {
     border: 1px solid #dfe3e8;
     width: 300px;
     height: 250px;
-}
 
-.user-profile__username {
-    padding: 10px 0px;
-}
+    h1 {
+      padding: 10px 0px;
+      margin: 0;
+    }
 
-.user-profile__admin-badge {
-    background: rebeccapurple;
-    color: white;
-    border-radius: 5px;
-    margin-right: auto;
-    font-weight: bold;
-    padding: 2px 10px;
-}
+    .user-profile__create-tweet {
+      border-top: 1px solid #dfe3e8;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
 
-.user-profile__tweet-wrapper {
-  display: grid;
-  grid-gap: 10px;
+    .user-profile__username {
+      padding: 10px 0px;
+    }
+
+    .user-profile__admin-badge {
+      background: rebeccapurple;
+      color: white;
+      border-radius: 5px;
+      margin-right: auto;
+      font-weight: bold;
+      padding: 2px 10px;
+    }
+  }
+
+  .user-profile__tweet-wrapper {
+    display: grid;
+    grid-gap: 10px;
+  }
+
 }
 
 .user-profile__follower-count {
     padding: 5px 0px;
 }
 
-h1 {
-    padding: 10px 0px;
-    margin: 0;
-}
 
-.user-profile__create-tweet {
-  border-top: 1px solid #dfe3e8;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-
-}
 </style>
 
