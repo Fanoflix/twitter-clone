@@ -87,13 +87,20 @@ export default {
         }
 
         button {
+            
             padding: 5px 20px;
             margin: auto 0;
-            border-radius: 5px;
+            border-radius: 3px;
             border: none;
             background-color: darkred;
             color: white;
             font-weight: bold;
+            font-variant-caps: small-caps;
+            transition: 0.2s ease-in-out;
+            &:hover{
+                background-color: lightcoral;
+                border-radius: 20px;
+            }
         }
     }
 
