@@ -3,7 +3,7 @@
                                                                             <!-- :class is a special class, we can provide a condition for this class to be implemented.
                                                                                   It will only be implemented if newTweetCharacterCount exceeds 180 in this case -->
         <form class="user-profile__create-tweet" @submit.prevent="createNewTweet" :class="{ '--exceeded': newTweetCharacterCount > 180}">
-          <label for="newTweet"> <strong> New Tweet </strong> ({{newTweetCharacterCount}}/180) </label>
+          <label for="newTweet"> <strong> New Tweet </strong>  ({{newTweetCharacterCount}}/180) </label>
           <!-- The value of the "newTweetContent" is now synced up with the value of this text area. This is because we provided a 'v-model' to the text area-->  
           <textarea id="newTweet" rows="4" v-model="newTweetContent"></textarea>
 
@@ -66,8 +66,16 @@ export default {
     flex-direction: column;
 
     textarea {
-        border: 1px solid #def3e8;
+        border-color: crimson;
+        background-color: black;
+        opacity: 0.7;
+        color: white;
+        border: 2px solid black;
         border-radius: 5px;
+        &:focus{
+            border: 1px solid crimson;
+            border-color: crimson;
+        }
     }
     
     .user-profile__create-tweet-type {
@@ -83,7 +91,7 @@ export default {
             margin: auto 0;
             border-radius: 5px;
             border: none;
-            background-color: crimson;
+            background-color: darkred;
             color: white;
             font-weight: bold;
         }

@@ -40,12 +40,14 @@ export default {
 <style lang="scss" scoped>
 .tweet-item {
     padding: 20px;
-    background-color: white;
+    background-color: rgb(70, 0, 0);
+    color: white;
     border-radius: 5px;
-    border: 1px solid #DFE3E8;
+    border: 3px solid black;
     box-sizing: border-box;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.1s ease;
+    max-width: 800px;
 
     .tweet-item__user {
         font-weight: bold;
@@ -54,7 +56,7 @@ export default {
 
     // &:hover is just saying add hover to the parent class. This is part of SCSS.
     &:hover {
-        transform: scale(1.07, 1);
+        transform: scale(1.06, 0.99);
     }
 }
 

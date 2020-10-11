@@ -19,7 +19,7 @@
 
     <!-- Tweets Wrapper UI -->
     <div class="user-profile__tweets-wrapper">
-        <TweetItem v-for="tweet in user.tweets" 
+        <TweetItem class="tweet-item" v-for="tweet in user.tweets" 
             :key="tweet.id" 
             :username="user.username" 
             :tweet="tweet" 
@@ -87,6 +87,7 @@ export default {
 
 <!-- The scoped Attribute. Clean way to write CSS -->
 <style lang="scss" scoped>
+
 .user-profile {
   display: grid;
   grid-template-columns: 1fr 3fr;
@@ -95,13 +96,16 @@ export default {
   padding: 50px 5%;
 
   .user-profile__user-panel {
+    //background-image: radial-gradient(rgb(90, 0, 0), rgb(65, 0, 0), rgb(41, 0, 0));
+    background-image: url("user-panel-background.jpg");
     display: flex;
+    color: white;
     flex-direction: column;
     margin-right: 50px;
     padding: 20px 20px;
-    background-color: white;    
+    background-color: black;
     border-radius: 5px;
-    border: 1px solid #dfe3e8;
+    border: 2px solid black;
     width: 300px;
     height: 250px;
 
@@ -115,7 +119,7 @@ export default {
     }
 
     .user-profile__admin-badge {
-      background: rebeccapurple;
+      background: red ;
       color: white;
       border-radius: 5px;
       margin-right: auto;
@@ -127,8 +131,13 @@ export default {
   .user-profile__tweet-wrapper {
     display: grid;
     grid-gap: 10px;
-  }
+    max-width: 10px;
 
+    .tweet-item{
+      margin-right: 50px;
+    max-width: 10px;
+    }
+  }
 }
 
 .user-profile__follower-count {
