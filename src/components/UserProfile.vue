@@ -1,43 +1,21 @@
 <template>
   <div class="user-profile">
-    <div class="user-profile__user-panel">
-      <!-- Username -->
-      <h1 class="user-profile__username"> @{{ user.username }} </h1>
-        <!-- Admin Badge -->
-        <div class="user-profile__admin-badge" v-if="user.isAdmin">
-            Admin
-        </div>
-
-        <!-- Follower Count Wrapper  -->
-        <div class="user-profile__follower-count">
-            <strong>Followers: </strong> {{ followers }}
-        </div>
-
-        <!-- Create Tweet -->
-                                                                            <!-- :class is a special class, we can provide a condition for this class to be implemented.
-                                                                                  It will only be implemented if newTweetCharacterCount exceeds 180 in this case -->
-        <form class="user-profile__create-tweet" @submit.prevent="createNewTweet" :class="{ '--exceeded': newTweetCharacterCount > 180}">
-          <label for="newTweet"> <strong> New Tweet </strong> ({{newTweetCharacterCount}}/180) </label>
-          <!-- The value of the "newTweetContent" is now synced up with the value of this text area. This is because we provided a 'v-model' to the text area-->  
-          <textarea id="newTweet" rows="4" v-model="newTweetContent"></textarea>
-
-          <!-- Tweet Types Selector UI -->
-          <div class="user-profile__create-tweet-type">
-            <label for="newTweetType"> <strong>Type:</strong></label>
-            <select id="newTweetType" v-model="selectedTweetType">
-              <!-- In Vue, if you put a colon before the attribute. It can then be referenced as a variable -->
-              <option :value="option.value" v-for="(option,index) in tweetTypes" :key="index">
-                {{ option.name }}
-              </option>
-            </select>
+    <div class="user-profile__sidebar">
+      <div class="user-profile__user-panel">
+        <!-- Username -->
+        <h1 class="user-profile__username"> @{{ user.username }} </h1>
+          <!-- Admin Badge -->
+          <div class="user-profile__admin-badge" v-if="user.isAdmin">
+              Admin
           </div>
-          <!-- A normal button if pressed, will refresh the page. But we don't want that as we're creating a Single Page Application
-               We change this defautl functionality in the obvious place i.e: The form tag. by using @submit.prevent -->
-          <button>
-            Tweet!
-          </button>
-        </form>
-    </div>
+
+          <!-- Follower Count Wrapper  -->
+          <div class="user-profile__follower-count">
+              <strong>Followers: </strong> {{ followers }}
+          </div>
+          <CreateTweetPanel @add-tweet="addTweet"/>
+        </div>
+      </div>
 
     <!-- Tweets Wrapper UI -->
     <div class="user-profile__tweets-wrapper">
@@ -45,27 +23,23 @@
             :key="tweet.id" 
             :username="user.username" 
             :tweet="tweet" 
-            @favourite="toggleFavourite"/>
+            @favourite="toggleFavourite"
+        />
     </div>
+  
   </div>
-
 
 </template>
 
 <script>
 import TweetItem from './TweetItem'
+import CreateTweetPanel from './CreateTweetPanel'
 
 export default {
     name: "UserProfile",
-    components: {TweetItem},
+    components: {CreateTweetPanel, TweetItem},
     data() {
       return {
-        newTweetContent: '',
-        selectedTweetType: 'instant',
-        tweetTypes: [
-          { value: 'draft', name: 'Draft'},
-          { value: 'instant', name: 'Instant Tweet'}
-        ],
         followers: 0,
         user: {
             id: 1,
@@ -91,9 +65,6 @@ export default {
       computed: {
         fullName() {
           return `${this.user.firstName} ${this.user.lastName}`
-        },
-        newTweetCharacterCount() {
-          return this.newTweetContent.length;
         }
       },
       methods: {
@@ -103,15 +74,9 @@ export default {
         toggleFavourite(id) {
           console.log(`Favourited Tweet #${id}`)
         },
-        createNewTweet() {
-          if (this.newTweetContent && this.selectedTweetType !== 'draft') {
-            // the unshift is a JScript method, that adds new items to the beginning of the array
-            this.user.tweets.unshift({
-              id: this.user.tweets.length + 1,
-              content: this.newTweetContent
-            })
-          }
-          this.newTweetContent = '';
+        addTweet(tweet) {
+          // the unshift is a JScript method, that adds new items to the beginning of the array
+          this.user.tweets.unshift({ id: this.user.tweets.length + 1, content: tweet });
         }
       },
       mounted() {
@@ -143,24 +108,6 @@ export default {
     h1 {
       padding: 10px 0px;
       margin: 0;
-    }
-
-    .user-profile__create-tweet {
-      border-top: 1px solid #dfe3e8;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-
-      &.--exceeded{
-        color:red;
-        border-color: red;
-        
-        button{
-          background-color: red;
-          border: none;
-          color: white;
-        }
-      }
     }
 
     .user-profile__username {

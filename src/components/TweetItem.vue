@@ -28,8 +28,8 @@ export default {
     },
     methods: {
         favouriteTweet(id) {
-            //favourite is now an event. We use this in UserProfile.vue file
             this.$emit('favourite', id) //We're emitting (returning back to the parent) the id... and also in turn making 'favourite' an event.
+            //favourite is now an event. We use this in UserProfile.vue file
         }
     }
 };
