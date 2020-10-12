@@ -40,7 +40,7 @@ export default {
 <style lang="scss" scoped>
 .tweet-item {
     padding: 20px;
-    background-color: rgb(70, 0, 0);
+    background-color: rgb(63, 1, 1);
     color: white;
     border-radius: 5px;
     border: 3px solid black;

@@ -73,7 +73,7 @@ export default {
         border: 2px solid black;
         border-radius: 5px;
         &:focus{
-            border: 1px solid crimson;
+            border: 2px solid crimson;
             border-color: crimson;
         }
     }
@@ -96,10 +96,11 @@ export default {
             color: white;
             font-weight: bold;
             font-variant-caps: small-caps;
-            transition: 0.2s ease-in-out;
+            transition: 0.15s ease-in-out;
             &:hover{
-                background-color: lightcoral;
-                border-radius: 20px;
+                background-color: white;
+                color: darkred;
+                border-radius: 8px;
             }
         }
     }

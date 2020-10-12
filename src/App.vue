@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="container"></div>
+    <div class="container-top"></div>
     <nav>
       <div class="nav__logo">
         Tweeter
@@ -9,7 +9,7 @@
         <h5> Logged in as:  {{ user.username }}</h5>
       </div>
     </nav>
-    <div class="container"></div>
+    <div class="container-bottom"></div>
     <br>
     <UserProfile/>
   </div>
@@ -33,6 +33,16 @@ export default {
 </script>
 
 <style lang="scss" >
+
+//Website Theme
+:root {
+  --main-bg-color: rgb(26, 26, 26);
+  --nav-bar-color: rgb(82, 0, 0);
+  --shadow-color:  rgb(21, 21, 21);
+  --nav-bar-height: 10px;
+}
+
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -40,13 +50,15 @@ export default {
   color: #0d1a27;
   min-height: 100vh;
   min-width: auto;
-  background-color:rgb(39, 24, 24) ;
+  background-color: var(--main-bg-color);
+  
   nav {
+    // background-image: linear-gradient( var(--main-bg-color), var(--nav-bar-color),  var(--main-bg-color));
+    background-color: var(--nav-bar-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 5%;
-    background-color: darkred;
+    padding: 10px 2%;
     color: white;
 
     .nav__logo {
@@ -61,9 +73,17 @@ export default {
     }
   }
 
-  .container {
-    border: 3px solid black; 
+  .container-top {
+    min-height: var(--nav-bar-height);
+    background-image: linear-gradient(  var(--main-bg-color),var(--shadow-color));
   }
+
+  .container-bottom { 
+    min-height: var(--nav-bar-height);
+    background-image: linear-gradient( var(--shadow-color), var(--main-bg-color) );
+  }
+
+  
 }
 
 </style>
