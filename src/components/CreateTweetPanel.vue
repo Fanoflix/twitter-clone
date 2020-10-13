@@ -3,17 +3,17 @@
                                                                             <!-- :class is a special class, we can provide a condition for this class to be implemented.
                                                                                   It will only be implemented if newTweetCharacterCount exceeds 180 in this case -->
         <form class="user-profile__create-tweet" @submit.prevent="createNewTweet" :class="{ '--exceeded': newTweetCharacterCount > 180}">
-          <label for="newTweet"> <strong> New Tweet </strong>  ({{newTweetCharacterCount}}/180) </label>
+          <label for="newTweet"> <strong class="user-profile__tweet-class"> Tweet </strong>  ({{newTweetCharacterCount}}/180) </label>
           <!-- The value of the "newTweetContent" is now synced up with the value of this text area. This is because we provided a 'v-model' to the text area-->  
-          <textarea id="newTweet" rows="4" v-model="newTweetContent"></textarea>
+          <textarea id="newTweet" rows="4" v-model="state.newTweetContent"></textarea>
 
           <!-- Tweet Types Selector UI -->
           <div class="user-profile__create-tweet-type">
               <div class="create-tweet-type">
-                <label for="newTweetType"> <strong>Type: </strong></label>
-                <select id="newTweetType" v-model="selectedTweetType">
+                <label for="newTweetType"></label>
+                <select id="newTweetType" v-model="state.selectedTweetType">
                 <!-- In Vue, if you put a colon before the attribute. It can then be referenced as a variable -->
-                <option :value="option.value" v-for="(option,index) in tweetTypes" :key="index">
+                <option :value="option.value" v-for="(option,index) in state.tweetTypes" :key="index">
                     {{ option.name }}
                 </option>
                 </select> 
@@ -30,51 +30,73 @@
 </template>
 
 <script>
+import { reactive, computed } from 'vue';
 export default {
     name: "CreateTweetPanel",
-    data() {
-        return {
+
+    setup(props, ctx) {
+        const state = reactive({
             newTweetContent: '',
             selectedTweetType: 'instant',
             tweetTypes: [
                 { value: 'draft', name: 'Draft'},
                 { value: 'instant', name: 'Instant Tweet'}
             ]
-        }
-    },
-    computed: {
-        newTweetCharacterCount() {
-          return this.newTweetContent.length;
-        }
-    },
-    methods: {
-        createNewTweet() {
-          if (this.newTweetContent && this.selectedTweetType !== 'draft') {
-            this.$emit('add-tweet', this.newTweetContent)
-            this.newTweetContent = '';
+        })
+        // This:
+        /* newTweetCharacterCount() {
+           return this.newTweetContent.length;
+           } */
+        // is identical to line 51.
+        const newTweetCharacterCount = computed(() => state.newTweetContent.length)
+
+        function createNewTweet() {
+          if (state.newTweetContent && state.selectedTweetType !== 'draft') {
+            ctx.emit('add-tweet', state.newTweetContent);
+            state.newTweetContent = '';
           }
         }
+
+        return {
+            state,
+            newTweetCharacterCount,
+            createNewTweet
+        }
     }
+   
 }
 </script>
 
 <style lang="scss" scoped>
+
 .user-profile__create-tweet {
     margin-top: 20px;
     padding: 20px 0;
     display: flex;
     flex-direction: column;
 
+
+    .user-profile__tweet-class {
+        font-size: 30px;
+        color: rgb(0, 0, 0);
+        text-shadow: 0px 0px 5px rgb(255, 0, 0);
+    }
     textarea {
-        border-color: crimson;
-        background-color: black;
+        margin-top: 20px;
+        min-height: 20px;
+        background-color: rgb(21, 0, 0);
         opacity: 0.7;
         color: white;
-        border: 2px solid black;
-        border-radius: 5px;
+        border: 3px solid  rgb(107, 27, 27);
+        border-radius: 15px;
+        transition: all 0.5s linear;
+        
         &:focus{
-            border: 2px solid crimson;
-            border-color: crimson;
+            outline: none !important;
+            border-radius: 1px;
+            background-color: black;
+            border-color: rgb(0, 255, 251);
+            box-shadow: 0px 0px 15px rgb(0, 255, 251), 0px 0px 5px rgb(0, 255, 251), 0px 0px 5px rgb(0, 255, 251)
         }
     }
     
@@ -83,24 +105,24 @@ export default {
         justify-content: space-between;
 
         .create-tweet-type{
-            padding: 10px 0;
+            padding: 20px 0;
         }
 
         button {
-            
-            padding: 5px 20px;
+            padding: 2px 20px;
             margin: auto 0;
-            border-radius: 3px;
-            border: none;
-            background-color: darkred;
+            border-radius: 20px;
+            border: 3px solid rgb(48, 0, 0);
+            background-color: black;
             color: white;
             font-weight: bold;
             font-variant-caps: small-caps;
-            transition: 0.15s ease-in-out;
+            transition: 0.3s ease-in-out;
             &:hover{
-                background-color: white;
-                color: darkred;
-                border-radius: 8px;
+                background-color: black;
+                border-color: rgb(0, 255, 251);
+                color: rgb(175, 0, 0);
+                border-radius: 5px;
             }
         }
     }
@@ -111,14 +133,11 @@ export default {
 
         .user-profile__create-tweet-type {
             button {
-                background-color: gray;
-                color: white;
+                background-color: rgb(0, 0, 0);
+                border-color: rgb(34, 34, 34);
+                color: gray;
             }
         }
     }
 }
-
-
-
-
 </style>
