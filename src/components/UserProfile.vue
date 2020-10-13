@@ -90,24 +90,26 @@ export default {
 
 .user-profile {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 5fr;
   grid-gap: 50px;
-  width: 100%;
-  padding: 50px 5%;
+  width: 90%;
+  padding: 30px 2%;
 
   .user-profile__user-panel {
-    //background-image: radial-gradient(rgb(90, 0, 0), rgb(65, 0, 0), rgb(41, 0, 0));
-    background-image: url("user-panel-background.jpg");
+    // background-image: radial-gradient(rgb(58, 0, 0), rgb(0, 0, 0), rgb(24, 24, 24));
+    // background-image: url("user-panel-background.jpg");
     display: flex;
     color: white;
     flex-direction: column;
-    margin-right: 50px;
+    margin-right: 10px;
+    margin-left: 0px;
     padding: 20px 20px;
     background-color: black;
     border-radius: 5px;
-    border: 2px solid black;
+    border: 2px solid  rgb(107, 27, 27);
+    box-shadow: 0px 0px 35px  rgb(107, 27, 27);
     width: 300px;
-    height: 250px;
+    height: 400px;
 
     h1 {
       padding: 10px 0px;
@@ -116,6 +118,12 @@ export default {
 
     .user-profile__username {
       padding: 10px 0px;
+      transition: all 0.3s ease-out;
+      cursor: pointer;
+      &:hover {
+        text-shadow: 0px 0px 10px rgb(0, 255, 251), -1px -1px 5px rgb(255, 255, 255), 1px 1px 5px white;
+        color:rgb(0, 0, 0)
+      }
     }
 
     .user-profile__admin-badge {
@@ -135,7 +143,7 @@ export default {
 
     .tweet-item{
       margin-right: 50px;
-    max-width: 10px;
+      max-width: 10px;
     }
   }
 }

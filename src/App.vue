@@ -37,9 +37,8 @@ export default {
 //Website Theme
 :root {
   --main-bg-color: rgb(26, 26, 26);
-  --nav-bar-color: rgb(82, 0, 0);
-  --shadow-color:  rgb(21, 21, 21);
-  --nav-bar-height: 10px;
+  --nav-bar-color: rgb(0, 0, 0);
+  --nav-bar-height: 20px;
 }
 
 
@@ -60,10 +59,13 @@ export default {
     justify-content: space-between;
     padding: 10px 2%;
     color: white;
+    box-shadow: 0px 0px 20px rgb(0, 255, 251), 0px 0px 30px rgb(0, 255, 251);
 
     .nav__logo {
       font-weight: bold;
-      font-size: 30px;
+      font-size: 35px;
+      text-shadow: 0px 0px 10px rgb(0, 255, 251), 0px 0px 10px rgb(255, 255, 255);
+      color: rgb(0, 0, 0);
       font-variant-caps: all-petite-caps;
     }
 
@@ -73,15 +75,15 @@ export default {
     }
   }
 
-  .container-top {
-    min-height: var(--nav-bar-height);
-    background-image: linear-gradient(  var(--main-bg-color),var(--shadow-color));
-  }
+  // .container-top {
+  //   min-height: var(--nav-bar-height);
+  //   background-image: linear-gradient(  var(--main-bg-color), var(--shadow-fade-color), var(--shadow-color));
+  // }
 
-  .container-bottom { 
-    min-height: var(--nav-bar-height);
-    background-image: linear-gradient( var(--shadow-color), var(--main-bg-color) );
-  }
+  // .container-bottom { 
+  //   min-height: var(--nav-bar-height);
+  //   background-image: linear-gradient( var(--shadow-color),var(--shadow-fade-color), var(--main-bg-color) );
+  // }
 
   
 }
