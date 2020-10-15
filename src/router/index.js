@@ -35,10 +35,10 @@ const router = createRouter({
 // - Useful for redirecting people going to pages they're not suppsosed to go to
 // - Useful for pushing people to loading pages before we have loaded their user info
 router.beforeEach(async (to, from, next) => {
-  const user = store.state.user;
+  const user = store.state.User.user;
 
   if (!user) {
-    await store.dispatch('setUser', users[0]) //dispatch is the function you call to run actions.
+    await store.dispatch('User/setUser', users[0]) //dispatch is the function you call to run actions.
   }
 
   const isAdmin = false;

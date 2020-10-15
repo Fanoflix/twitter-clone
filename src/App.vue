@@ -8,7 +8,7 @@
       </div>
       </router-link>
 
-      <div class="nav__user">
+      <div class="nav__user" v-if="user">
         <h5> Logged in as:  {{ user.username }}</h5>
       </div>
     </nav>
@@ -26,7 +26,7 @@ export default {
 
   setup() {
     const store = useStore();
-    const user = computed(() => store.state.user);
+    const user = computed(() => store.state.User.user);
 
     return {
       user
