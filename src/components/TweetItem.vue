@@ -2,10 +2,10 @@
     <div class="tweet-item" @click="favouriteTweet(tweet.id)">
         <div class="user-profile__tweet">
             <div class="tweet-item__user">
-                @{{username}}
+                @{{ username }}
             </div>
             <div class="tweet-item__content">
-                {{ tweet.content}}
+                {{ tweet.content }}
             </div>
         </div>
     </div>
@@ -26,12 +26,6 @@ export default {
             required: true
         }
     },
-    methods: {
-        favouriteTweet(id) {
-            this.$emit('favourite', id) //We're emitting (returning back to the parent) the id... and also in turn making 'favourite' an event.
-            //favourite is now an event. We use this in UserProfile.vue file
-        }
-    }
 };
 </script>
 

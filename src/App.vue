@@ -6,7 +6,7 @@
         Tweeter
       </div>
       <div class="nav__user">
-        <h5> Logged in as:  {{ user.username }}</h5>
+        <h5> Logged in as:  {{ state.user.username }}</h5>
       </div>
     </nav>
     <div class="container-bottom"></div>
@@ -16,18 +16,25 @@
 </template>
 
 <script>
+import { reactive } from 'vue';
 import UserProfile from "./components/UserProfile";
 
 export default {
   name: 'App',
   components: { UserProfile },
-  data() {
-    return {
+
+  setup() {
+    const state = reactive ({
       user: {
         username: '__Fanoflix'
       }
+    })
+
+    return {
+      state
     }
   }
+  
   
 }
 </script>

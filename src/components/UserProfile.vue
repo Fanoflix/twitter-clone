@@ -3,15 +3,15 @@
     <div class="user-profile__sidebar">
       <div class="user-profile__user-panel">
         <!-- Username -->
-        <h1 class="user-profile__username"> @{{ user.username }} </h1>
+        <h1 class="user-profile__username"> @{{ state.user.username }} </h1>
           <!-- Admin Badge -->
-          <div class="user-profile__admin-badge" v-if="user.isAdmin">
+          <div class="user-profile__admin-badge" v-if="state.user.isAdmin">
               Admin
           </div>
 
           <!-- Follower Count Wrapper  -->
           <div class="user-profile__follower-count">
-              <strong>Followers: </strong> {{ followers }}
+              <strong>Followers: </strong> {{ state.followers }}
           </div>
           <CreateTweetPanel @add-tweet="addTweet"/>
         </div>
@@ -19,11 +19,10 @@
 
     <!-- Tweets Wrapper UI -->
     <div class="user-profile__tweets-wrapper">
-        <TweetItem class="tweet-item" v-for="tweet in user.tweets" 
+        <TweetItem class="tweet-item" v-for="tweet in state.user.tweets" 
             :key="tweet.id" 
-            :username="user.username" 
-            :tweet="tweet" 
-            @favourite="toggleFavourite"
+            :username="state.user.username" 
+            :tweet="tweet"
         />
     </div>
   
@@ -32,14 +31,16 @@
 </template>
 
 <script>
+
+import { reactive } from 'vue'
 import TweetItem from './TweetItem'
 import CreateTweetPanel from './CreateTweetPanel'
 
 export default {
     name: "UserProfile",
     components: {CreateTweetPanel, TweetItem},
-    data() {
-      return {
+    setup() {
+      const state = reactive ({
         followers: 0,
         user: {
             id: 1,
@@ -52,36 +53,20 @@ export default {
                 {id: 1, content: 'Cloning twitter here *whistles*'},
                 {id: 2, content: 'Testing things out, nothing to see here.'}
             ]
-        }
+        } 
+      })
+      
+      function addTweet(tweet) {
+          // the unshift is a JScript method, that adds new items to the beginning of the array
+          state.user.tweets.unshift({ id: state.user.tweets.length + 1, content: tweet });
+      }
+      
+
+      return {
+        state,
+        addTweet
       }
     },
-      watch:{
-        followers(newCount, oldCount) {
-          if (oldCount < newCount) {
-            console.log(`${this.user.username} has gained a new follower!`)
-          }
-        }
-      },
-      computed: {
-        fullName() {
-          return `${this.user.firstName} ${this.user.lastName}`
-        }
-      },
-      methods: {
-        followUser() {
-          this.followers++
-        },
-        toggleFavourite(id) {
-          console.log(`Favourited Tweet #${id}`)
-        },
-        addTweet(tweet) {
-          // the unshift is a JScript method, that adds new items to the beginning of the array
-          this.user.tweets.unshift({ id: this.user.tweets.length + 1, content: tweet });
-        }
-      },
-      mounted() {
-        this.followUser();
-      }
 }
 </script>
 

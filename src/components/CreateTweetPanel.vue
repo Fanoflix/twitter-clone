@@ -48,7 +48,7 @@ export default {
            return this.newTweetContent.length;
            } */
         // is identical to line 51.
-        const newTweetCharacterCount = computed(() => state.newTweetContent.length)
+        const newTweetCharacterCount = computed(() => state.newTweetContent.length) //newTweetCharacterCount is a computed function.
 
         function createNewTweet() {
           if (state.newTweetContent && state.selectedTweetType !== 'draft') {
