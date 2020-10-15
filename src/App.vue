@@ -9,7 +9,7 @@
       </router-link>
 
       <div class="nav__user">
-        <h5> Logged in as:  {{ state.user.username }}</h5>
+        <h5> Logged in as:  {{ user.username }}</h5>
       </div>
     </nav>
     <br>
@@ -18,20 +18,18 @@
 </template> 
 
 <script>
-import { reactive } from 'vue';
+import { computed } from 'vue';
+import { useStore } from 'vuex';
 
 export default {
   name: 'App',
 
   setup() {
-    const state = reactive ({
-      user: {
-        username: '__Fanoflix'
-      }
-    })
+    const store = useStore();
+    const user = computed(() => store.state.user);
 
     return {
-      state
+      user
     }
   }
   

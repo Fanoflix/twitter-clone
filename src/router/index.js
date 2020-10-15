@@ -1,5 +1,6 @@
-import { resolveComponent } from 'vue';
 import { createRouter, createWebHistory, } from 'vue-router'
+import store from '../store';
+import { users } from '../assets/users';
 import Home from '../views/Home';
 import UserProfile from '../views/UserProfile';
 import Admin from '../views/Admin';
@@ -34,6 +35,12 @@ const router = createRouter({
 // - Useful for redirecting people going to pages they're not suppsosed to go to
 // - Useful for pushing people to loading pages before we have loaded their user info
 router.beforeEach(async (to, from, next) => {
+  const user = store.state.user;
+
+  if (!user) {
+    await store.dispatch('setUser', users[0]) //dispatch is the function you call to run actions.
+  }
+
   const isAdmin = false;
   const requiresAdmin = to.matched.some(record => record.meta.requiresAdmin);
 
