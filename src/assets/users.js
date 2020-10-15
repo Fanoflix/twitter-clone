@@ -46,7 +46,7 @@ export const users =  [
             "email" : "Abdullah@Elusive.com",
             "isAdmin" : false,
             "tweets": [
-                {"id": 1, "content": "Hello, my name is Abdullah!."},
+                {"id": 1, "content": "Hello, my name is Abdullah!"},
                 {"id": 2, "content": "I play We were here together (a.k.a shit game)"}
             ]
         }
