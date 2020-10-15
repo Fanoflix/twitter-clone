@@ -98,6 +98,7 @@ export default {
             border-color: rgb(0, 255, 251);
             box-shadow: 0px 0px 15px rgb(0, 255, 251), 0px 0px 5px rgb(0, 255, 251), 0px 0px 5px rgb(0, 255, 251)
         }
+        
     }
     
     .user-profile__create-tweet-type {

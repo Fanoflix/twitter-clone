@@ -1,5 +1,5 @@
 <template>
-    <div class="tweet-item" @click="favouriteTweet(tweet.id)">
+    <div class="tweet-item">
         <div class="user-profile__tweet">
             <div class="tweet-item__user">
                 @{{ username }}

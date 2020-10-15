@@ -1,27 +1,27 @@
 <template>
   <div id="app">
-    <div class="container-top"></div>
     <nav>
+      <router-link to="/"> 
+
       <div class="nav__logo">
         Tweeter
       </div>
+      </router-link>
+
       <div class="nav__user">
         <h5> Logged in as:  {{ state.user.username }}</h5>
       </div>
     </nav>
-    <div class="container-bottom"></div>
     <br>
-    <UserProfile/>
+    <router-view/> <!-- This tag is going to be injected with whatever pag we're on.-->
   </div>
-</template>
+</template> 
 
 <script>
 import { reactive } from 'vue';
-import UserProfile from "./components/UserProfile";
 
 export default {
   name: 'App',
-  components: { UserProfile },
 
   setup() {
     const state = reactive ({
@@ -81,18 +81,6 @@ export default {
       font-size:13px
     }
   }
-
-  // .container-top {
-  //   min-height: var(--nav-bar-height);
-  //   background-image: linear-gradient(  var(--main-bg-color), var(--shadow-fade-color), var(--shadow-color));
-  // }
-
-  // .container-bottom { 
-  //   min-height: var(--nav-bar-height);
-  //   background-image: linear-gradient( var(--shadow-color),var(--shadow-fade-color), var(--main-bg-color) );
-  // }
-
-  
 }
 
 </style>

@@ -32,28 +32,23 @@
 
 <script>
 
-import { reactive } from 'vue'
-import TweetItem from './TweetItem'
-import CreateTweetPanel from './CreateTweetPanel'
+import { reactive, computed } from 'vue';
+import { users } from   "../assets/users";
+import { useRoute } from 'vue-router';
+import TweetItem from '../components/TweetItem';
+import CreateTweetPanel from '../components/CreateTweetPanel';
 
 export default {
     name: "UserProfile",
     components: {CreateTweetPanel, TweetItem},
+
     setup() {
+      const route = useRoute();
+      const userId = computed(() => route.params.userId) // Getting the userID param that we specified in the index.js file /user/:userId (note that the colon makes userID a var/param)
+      // Now we can use the var userID in the UserProfile context.
       const state = reactive ({
         followers: 0,
-        user: {
-            id: 1,
-            username: '_Fanoflix',
-            firstName: 'Ammar',
-            lastName: 'Nasir',
-            email: 'majidammar428@gmail.com',
-            isAdmin: true,
-            tweets: [
-                {id: 1, content: 'Cloning twitter here *whistles*'},
-                {id: 2, content: 'Testing things out, nothing to see here.'}
-            ]
-        } 
+        user: users[userId.value - 1] || users[0] 
       })
       
       function addTweet(tweet) {
@@ -64,7 +59,8 @@ export default {
 
       return {
         state,
-        addTweet
+        addTweet,
+        userId
       }
     },
 }
@@ -72,6 +68,10 @@ export default {
 
 <!-- The scoped Attribute. Clean way to write CSS -->
 <style lang="scss" scoped>
+
+h2{
+  color: white;
+}
 
 .user-profile {
   display: grid;
