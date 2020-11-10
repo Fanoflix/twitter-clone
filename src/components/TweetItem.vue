@@ -44,7 +44,7 @@ export default {
     box-shadow: 0px 0px 5px rgb(107, 27, 27);
     box-sizing: border-box;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     max-width: 800px;
 
     .tweet-item__user {
@@ -54,6 +54,7 @@ export default {
 
     // &:hover is just saying add hover to the parent class. This is part of SCSS.
     &:hover {
+        align-items: center;
         box-shadow: 0px 0px 10px rgb(0, 255, 251);
         border-color: rgb(0, 255, 251);
         transform: scale(1.06, 0.99);

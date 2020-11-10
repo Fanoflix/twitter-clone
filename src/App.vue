@@ -64,7 +64,8 @@ export default {
     justify-content: space-between;
     padding: 10px 2%;
     color: white;
-    box-shadow: 0px 0px 20px rgb(0, 255, 251), 0px 0px 30px rgb(0, 255, 251);
+    border-bottom: 2px solid rgb(107, 27, 27);
+    box-shadow: 0px 0px 30px rgb(109, 0, 0), 0px 0px 20px rgb(107, 27, 27), 0px 0px 30px rgb(107, 27, 27);
 
     .nav__logo {
       font-weight: bold;
