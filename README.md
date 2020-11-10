@@ -3,7 +3,7 @@
 #### Twitter clone in terms of functionality. UI will definitely be ugly (unless I sacrifice my grades this semester).
 ## 
 ```diff
-- This project is NOT complete yet! 
++ This project is complete as of November 15, 2020
 ```
 
 ###### The "WebsiteProgress.PNG will be updated as frequently as possible so that newbies (like me) can feel inspired or motivated. Honestly its more to help myself get excited for the next step.
