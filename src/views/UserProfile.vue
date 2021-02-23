@@ -107,6 +107,7 @@ h2{
       cursor: pointer;
       &:hover {
         text-shadow: 0px 0px 10px rgb(0, 255, 251), -1px -1px 5px rgb(255, 255, 255), 1px 1px 5px white;
+        letter-spacing: 10px;
         color:rgb(0, 0, 0)
       }
     }
